@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BREW | Premium Coffee Experience</title>
+  
+  <!-- Bulma CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --dark-brown: #3A2618;
+      --medium-brown: #8B5A2B;
+      --cream: #F5F0E6;
+      --black: #000000;
+      --text-dark: #2C1810;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FFFFFF;
+      color: var(--text-dark);
+      transition: all 0.3s ease;
+    }
+    
+    body.dark-mode {
+      background-color: #1A1A1A;
+      color: #FFFFFF;
+    }
+    
+    .dark-mode .title,
+    .dark-mode .subtitle,
+    .dark-mode .content,
+    .dark-mode p {
+      color: #FFFFFF !important;
+    }
+    
+    .dark-mode .has-text-primary-dark {
+      color: #FFFFFF !important;
+    }
+    .dark-mode #menu {
+    background-color: #1E1E1E;
+    padding: 3rem 1.5rem;
+    border-radius: 12px;
+    }
+
+    .dark-mode #menu .has-text-primary-dark,
+    .dark-mode #menu .subtitle,
+    .dark-mode #menu .has-text-accent {
+      color: var(--medium-brown) !important;
+    }
+    .title-font {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .hero-section {
+      background: linear-gradient(rgba(58, 38, 24, 0.7), rgba(58, 38, 24, 0.7)), url('https://images.unsplash.com/photo-1513530176992-0cf39c4cbed4?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+    }
+    
+    .coffee-bean {
+      width: 40px;
+      height: 25px;
+      background: var(--dark-brown);
+      border-radius: 50%;
+      position: relative;
+      margin: 0 auto;
+    }
+    
+    .coffee-bean::before {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 20px;
+      background: var(--medium-brown);
+      border-radius: 50%;
+      top: 2.5px;
+      left: 5px;
+    }
+    
+    .menu-card {
+      transition: all 0.3s ease;
+      border: 1px solid #DEE2E6;
+      background-color: var(--cream);
+    }
+    
+    .dark-mode .menu-card {
+      border-color: #495057;
+      background-color: #2D2D2D;
+    }
+    
+    .menu-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(58, 38, 24, 0.15);
+    }
+    
+    .btn-brown {
+      background: linear-gradient(135deg, var(--dark-brown) 0%, var(--medium-brown) 100%);
+      border: none;
+      color: white !important;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-brown:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(58, 38, 24, 0.3);
+      color: white !important;
+    }
+    
+    .testimonial-card {
+      background: linear-gradient(135deg, #FFFFFF 0%, var(--cream) 100%);
+      border-left: 4px solid var(--medium-brown);
+    }
+    
+    .dark-mode .testimonial-card {
+      background: linear-gradient(135deg, #2D2D2D 0%, #1A1A1A 100%);
+      color: #FFFFFF !important;
+    }
+    
+    .footer-custom {
+      background: linear-gradient(135deg, var(--dark-brown) 0%, var(--black) 100%);
+    }
+    
+    .social-icon {
+      transition: all 0.3s ease;
+      color: #FFFFFF !important;
+    }
+    
+    .social-icon:hover {
+      transform: translateY(-3px);
+      color: var(--medium-brown) !important;
+    }
+    
+    .theme-toggle {
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .theme-toggle:hover {
+      transform: scale(1.1);
+    }
+    
+    /* Transparent Navbar */
+    .navbar {
+      background-color: transparent !important;
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar-item {
+      color: #FFFFFF !important;
+    }
+
+    .navbar-item:hover {
+      color: var(--medium-brown) !important;
+    }
+
+    .title.has-text-accent {
+      color: var(--medium-brown) !important;
+    }
+
+    .has-text-primary-dark {
+      color: var(--dark-brown) !important;
+    }
+    
+    .dark-mode .has-text-accent {
+      color: var(--medium-brown) !important;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar is-transparent is-fixed-top">
+  <div class="navbar-brand">
+    <a class="navbar-item title-font has-text-weight-bold is-size-4" href="#" style="color:#F5F0E6 !important;">
+      BREW
+    </a>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navMenu" class="navbar-menu">
+    <div class="navbar-end">
+      <a class="navbar-item" href="#home">Home</a>
+      <a class="navbar-item" href="#about">About</a>
+      <a class="navbar-item" href="#menu">Menu</a>
+      <a class="navbar-item" href="#locations">Locations</a>
+      <a class="navbar-item" href="#contact">Contact</a>
+      <div class="navbar-item">
+        <button class="button btn-brown" id="themeToggle">
+          <span class="icon">
+            <i class="fas fa-moon"></i>
+          </span>
+        </button>
+      </div>
+      <div class="navbar-item">
+        <a class="button btn-brown has-text-weight-bold" href="#order">
+          Order Online
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero-section hero is-fullheight-with-navbar">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-size-1 has-text-white title-font">BREW</h1>
+      <h2 class="subtitle is-size-4 has-text-white">
+        Where every cup tells a story. Experience the art of perfect coffee crafted with passion and precision.
+      </h2>
+      <div class="buttons is-centered are-medium">
+        <a class="button is-light" href="#menu">Explore Our Menu</a>
+        <a class="button is-outlined is-light" href="#locations">Visit Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="has-text-centered mb-6">
+      <div class="coffee-bean mb-3"></div>
+      <h2 class="title is-2 title-font has-text-primary-dark">Our Story</h2>
+      <p class="subtitle is-5">
+        Founded on a passion for exceptional coffee and community connection
+      </p>
+    </div>
+    
+    <div class="columns is-vcentered">
+      <div class="column">
+        <figure class="image is-4by3">
+          <img src="https://i.pinimg.com/736x/0e/e3/65/0ee365f8c03d091827db75ba0a7c5d6b.jpg" alt="Modern coffee shop">
+        </figure>
+      </div>
+      <div class="column">
+        <h3 class="title is-3 title-font has-text-primary-dark mb-4">Crafting Perfection Since 2015</h3>
+        <div class="content">
+          <p>
+            At BREW, we believe that great coffee is more than just a beverage—it's an experience. 
+            Our master roasters carefully select the finest beans from sustainable farms around the world, 
+            ensuring every cup delivers exceptional flavor and quality.
+          </p>
+          <p>
+            From our signature blends to single-origin offerings, each batch is roasted with precision 
+            and brewed with care. We're committed to creating a welcoming space where coffee lovers 
+            can connect, create, and savor the moment.
+          </p>
+        </div>
+        <div class="columns is-mobile has-text-centered mt-5">
+          <div class="column">
+            <div class="title is-3 has-text-accent">8+</div>
+            <div class="subtitle is-6">Years Experience</div>
+          </div>
+          <div class="column">
+            <div class="title is-3 has-text-accent">50+</div>
+            <div class="subtitle is-6">Coffee Varieties</div>
+          </div>
+          <div class="column">
+            <div class="title is-3 has-text-accent">3</div>
+            <div class="subtitle is-6">Locations</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Menu Section -->
+<section id="menu" class="section has-background-light">
+  <div class="container">
+    <div class="has-text-centered mb-6">
+      <div class="coffee-bean mb-3"></div>
+      <h2 class="title is-2 title-font has-text-primary-dark">Our Signature Brews</h2>
+      <p class="subtitle is-5">
+        Discover our carefully curated selection of handcrafted coffee experiences
+      </p>
+    </div>
+
+    <div class="columns">
+      <!-- Menu Item 1 -->
+      <div class="column">
+        <div class="menu-card box has-text-centered">
+          <figure class="image is-4by3 mb-4">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d785fcc6-8688-4162-8dec-229e98c196bc.png" alt="Artisanal espresso shot with perfect crema">
+          </figure>
+          <h3 class="title is-4 title-font has-text-primary-dark">Classic Espresso</h3>
+          <p class="mb-4">Our signature blend with rich notes of dark chocolate and caramel</p>
+          <div class="title is-4 has-text-accent">₱100</div>
+        </div>
+      </div>
+
+      <!-- Menu Item 2 -->
+      <div class="column">
+        <div class="menu-card box has-text-centered">
+          <figure class="image is-4by3 mb-4">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4ef5894e-6264-494f-bb7b-646d0c23843a.png" alt="Perfectly layered latte with intricate leaf pattern">
+          </figure>
+          <h3 class="title is-4 title-font has-text-primary-dark">Hazelnut Latte</h3>
+          <p class="mb-4">Smooth espresso with steamed milk and natural hazelnut syrup</p>
+          <div class="title is-4 has-text-accent">₱120</div>
+        </div>
+      </div>
+
+      <!-- Menu Item 3 -->
+      <div class="column">
+        <div class="menu-card box has-text-centered">
+          <figure class="image is-4by3 mb-4">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fa021ccc-862a-423e-9032-01ee537d00c8.png" alt="Cold brew coffee served in a mason jar">
+          </figure>
+          <h3 class="title is-4 title-font has-text-primary-dark">Cold Brew</h3>
+          <p class="mb-4">Slow-steeped for 18 hours with notes of citrus and smooth finish</p>
+          <div class="title is-4 has-text-accent">₱130</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="has-text-centered mt-5">
+      <a class="button btn-brown is-large" href="#full-menu">View Full Menu</a>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section">
+  <div class="container">
+    <div class="has-text-centered mb-6">
+      <div class="coffee-bean mb-3"></div>
+      <h2 class="title is-2 title-font has-text-primary-dark">What Our Customers Say</h2>
+    </div>
+
+    <div class="columns">
+      <div class="column">
+        <div class="testimonial-card box">
+          <div class="has-text-warning mb-3">
+            <span class="icon"><i class="fas fa-star"></i></span>
+            <span class="icon"><i class="fas fa-star"></i></span>
+            <span class="icon"><i class="fas fa-star"></i></span>
+            <span class="icon"><i class="fas fa-star"></i></span>
+            <span class="icon"><i class="fas fa-star"></i></span>
+          </div>
+          <p class="mb-4">
+            "The best coffee I've ever had! The attention to detail in every cup is remarkable. 
+            BREW has become my daily ritual."
+          </p>
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <img class="is-rounded" src="https://scontent.fcrk2-2.fna.fbcdn.net/v/t1.15752-9/514316753_1870838923700554_680335738072628877_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=111&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeHcC-pXY15V7YtSf5soF33rcb4_qR_S2k1xvj-pH9LaTRwqQIM0_dpfuI21WrATFnbrhmt_tqpS2QIFSnivEOxD&_nc_ohc=dvmCIm69OqYQ7kNvwF_ZFZ9&_nc_oc=AdnOcRG5xcwW6XuyFvtdfQ3GGSqkkIurAGRM2FsljXyOD5Tm09Euy5h23NjgEECTVv0&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fcrk2-2.fna&oh=03_Q7cD3AF1ka5lZvpNwFezKDgrgd5nQR8m8VIL8p1GGn1-MYcuKA&oe=68D23116" alt="geng">
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-6">Grezzy Mae Vallo</p>
+              <p class="subtitle is-7">Regular Customer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="testimonial-card box">
+          <div class="has-text-warning mb-3">
+            <span class="icon"><i class="fas fa-star"></i></span>
+            <span class="icon"><i class="fas fa-star"></i></span>
+            <span class="icon"><i class="fas fa-star"></i></span>
+            <span class="icon"><i class="fas fa-star"></i></span>
+            <span class="icon"><i class="fas fa-star"></i></span>
+          </div>
+          <p class="mb-4">
+            "As a coffee enthusiast, I appreciate the quality and consistency. 
+            Their single-origin selections are exceptional and always fresh."
+          </p>
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <img class="is-rounded" src="https://scontent.fcrk2-2.fna.fbcdn.net/v/t1.15752-9/546260034_1982105645898332_6836116592987929582_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=105&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeHdkFgKWz131kzAFgyAwGIEHhkHecGXOmEeGQd5wZc6YedpGNmkrhA1pd6RKTf01Jrifp15DAmMu-ofL2i_854y&_nc_ohc=DxNSS3B0pKUQ7kNvwGgVp1j&_nc_oc=AdmrFXwUCUilzdAVPgCP8CowLkodarkI3-vKS4RDv_MDBCt4qAwn9jLoKl8tPTa23eA&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fcrk2-2.fna&oh=03_Q7cD3QHVKHhffDiWemGgdMFjigx4hZ_c4tvye22_DQmQZhTLew&oe=68ED8054" alt="wigi">
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-6">Luigi Benavides</p>
+              <p class="subtitle is-7">Coffee Connoisseur</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="testimonial-card box">
+          <div class="has-text-warning mb-3">
+            <span class="icon"><i class="fas fa-star"></i></span>
+            <span class="icon"><i class="fas fa-star"></i></span>
+            <span class="icon"><i class="fas fa-star"></i></span>
+            <span class="icon"><i class="fas fa-star"></i></span>
+            <span class="icon"><i class="fas fa-star"></i></span>
+          </div>
+          <p class="mb-4">
+            "Perfect atmosphere for working or meeting friends. 
+            Great coffee, friendly staff, and beautiful spaces at every location."
+          </p>
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <img class="is-rounded" src="https://scontent.fcrk2-4.fna.fbcdn.net/v/t1.15752-9/354873034_227797206811523_272693609811950177_n.jpg?stp=dst-jpg_s640x640_tt6&_nc_cat=101&ccb=1-7&_nc_sid=0024fc&_nc_eui2=AeHJHHWSiIh87f_gZ_xCBbHoSjVepaxDHDFKNV6lrEMcMYi4q4bTk8S1SD6KWkLGhm_ivnLP0Gk7ADpXsoxW1aFk&_nc_ohc=V8rwH2eaFRoQ7kNvwElmrGA&_nc_oc=AdmXF90QXItBQpv1NJNt1TLzX34Q2806dKLe2nBg7FBbcbksuAFa3yFYq5Om_R0lHkc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fcrk2-4.fna&oh=03_Q7cD3QHlyCU5I67pNDb2oNLcov0Jt7X2ErvgUR5B4WaTUN2XQQ&oe=68ED993A" alt="cc">
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-6">Christine Cancino</p>
+              <p class="subtitle is-7">Remote Worker</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer-custom footer has-text-white">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <h3 class="title is-4 title-font has-text-white">BREW</h3>
+        <p>
+          Crafting exceptional coffee experiences since 2015. 
+          Join us in our passion for perfect brews and community connection.
+        </p>
+        <div class="buttons mt-3">
+          <a class="button is-white is-outlined social-icon">
+            <span class="icon"><i class="fab fa-instagram"></i></span>
+            <span>Instagram</span>
+          </a>
+          <a class="button is-white is-outlined social-icon">
+            <span class="icon"><i class="fab fa-facebook"></i></span>
+            <span>Facebook</span>
+          </a>
+          <a class="button is-white is-outlined social-icon">
+            <span class="icon"><i class="fab fa-twitter"></i></span>
+            <span>Twitter</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="column">
+        <h3 class="title is-5 has-text-white">Locations</h3>
+        <div class="content">
+          <p><strong>Downtown</strong><br>123 Rizal Street</p>
+          <p><strong>Calasiao</strong><br>456 Junction</p>
+          <p><strong>Urdaneta City</strong><br>789 Urdaneta City</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <h3 class="title is-5 has-text-white">Hours</h3>
+        <div class="content">
+          <p>Monday - Friday: 6:30 AM - 8 PM</p>
+          <p>Saturday: 7 AM - 9 PM</p>
+          <p>Sunday: 7 AM - 6 PM</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <h3 class="title is-5 has-text-white">Contact</h3>
+        <div class="content">
+          <p>hello@brewcoffee.com</p>
+          <p>09123456789-BREW</p>
+          <a class="button btn-brown mt-3">Get Directions</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="has-text-centered pt-5">
+      <p>&copy; 2025 BREW Coffee Company. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Navbar burger
+    const burger = document.querySelector('.navbar-burger');
+    const menu = document.querySelector('#navMenu');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('is-active');
+      menu.classList.toggle('is-active');
+    });
+
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('.icon i');
+    
+    // Check for saved theme preference or use system preference
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+    
+    // Apply the current theme
+    if (currentTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+      themeIcon.classList.remove('fa-moon');
+      themeIcon.classList.add('fa-sun');
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const icon = themeToggle.querySelector('.icon i');
+      
+      if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        localStorage.setItem('theme', 'light');
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
